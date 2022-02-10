@@ -1,18 +1,20 @@
-import { ChangeEvent } from 'react';
-import { FormEvent, memo, VFC } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  memo,
+  SetStateAction,
+  VFC,
+} from 'react';
 import { v4 as uuid } from 'uuid';
 
-interface taskListProps {
-  id: string;
-  draggableId: string;
-  text: string;
-}
+import { taskListProps } from './TaskCard';
 
 interface Props {
   inputText: string;
-  setInputText: string;
-  setTaskList: taskListProps[];
+  setInputText: Dispatch<SetStateAction<string>>;
   taskList: taskListProps[];
+  setTaskList: Dispatch<SetStateAction<taskListProps[]>>;
 }
 
 export const TaskAddInput: VFC<Props> = memo((props) => {
@@ -49,3 +51,4 @@ export const TaskAddInput: VFC<Props> = memo((props) => {
     </div>
   );
 });
+TaskAddInput.displayName = 'UserDetailModal';

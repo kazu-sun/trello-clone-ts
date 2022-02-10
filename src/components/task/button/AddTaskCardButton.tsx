@@ -1,4 +1,4 @@
-import { memo, VFC } from 'react';
+import { Dispatch, memo, SetStateAction, VFC } from 'react';
 import { v4 as uuid } from 'uuid';
 
 interface taskCardsListProps {
@@ -8,7 +8,7 @@ interface taskCardsListProps {
 
 interface Props {
   taskCardsList: taskCardsListProps[];
-  setTaskCardsList: taskCardsListProps[];
+  setTaskCardsList: Dispatch<SetStateAction<taskCardsListProps[]>>;
 }
 
 export const AddTaskCardButton: VFC<Props> = memo((props) => {
@@ -28,3 +28,4 @@ export const AddTaskCardButton: VFC<Props> = memo((props) => {
     </div>
   );
 });
+AddTaskCardButton.displayName = 'UserDetailModal';

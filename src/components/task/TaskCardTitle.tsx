@@ -1,4 +1,4 @@
-import { FormEvent, ChangeEvent, memo, useState, VFC, FocusEvent } from 'react';
+import { ChangeEvent, FocusEvent, FormEvent, memo, useState, VFC } from 'react';
 
 export const TaskCardTitle: VFC = memo(() => {
   const [isClick, setIsClick] = useState(false);
@@ -41,3 +41,4 @@ export const TaskCardTitle: VFC = memo(() => {
     </div>
   );
 });
+TaskCardTitle.displayName = 'UserDetailModal';

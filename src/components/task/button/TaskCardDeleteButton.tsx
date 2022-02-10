@@ -1,13 +1,10 @@
-import { memo, VFC } from 'react';
+import { Dispatch, memo, SetStateAction, VFC } from 'react';
 
-interface taskCardsListProps {
-  id: string;
-  draggableId: string;
-}
+import { taskCardsListProps } from '../TaskCards';
 
 interface Props {
   taskCardsList: taskCardsListProps[];
-  setTaskCardsList: taskCardsListProps[];
+  setTaskCardsList: Dispatch<SetStateAction<taskCardsListProps[]>>;
   taskCard: taskCardsListProps;
 }
 
@@ -30,3 +27,4 @@ export const TaskCardDeleteButton: VFC<Props> = memo((props) => {
     </div>
   );
 });
+TaskCardDeleteButton.displayName = 'UserDetailModal';

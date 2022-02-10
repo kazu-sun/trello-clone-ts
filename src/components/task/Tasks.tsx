@@ -1,31 +1,30 @@
-import { memo, VFC } from 'react';
-import { Droppable, DragDropContext } from 'react-beautiful-dnd';
-import { Task } from './Task';
+import { Dispatch, memo, SetStateAction, VFC } from 'react';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 
-interface taskCardsListProps {
-  id: string;
-  draggableId: string;
-}
+import { Task } from './Task';
+import { taskListProps } from './TaskCard';
 
 interface Props {
-  taskList: taskCardsListProps[];
-  setTaskList: taskCardsListProps[];
+  taskList: taskListProps[];
+  setTaskList: Dispatch<SetStateAction<taskListProps[]>>;
 }
 
-//タスクを並び替える
+// タスクを並び替える
 const reorder = (
-  taskList: taskCardsListProps[],
+  taskList: taskListProps[],
   startIndex: number,
-  endindex: number,
+  endindex: number | undefined,
 ) => {
-  const remove = taskList.splice(startIndex, 1);
-  taskList.splice(endindex, 0, remove[0]);
+  if (endindex !== undefined) {
+    const remove = taskList.splice(startIndex, 1);
+    taskList.splice(endindex, 0, remove[0]);
+  }
 };
 
 export const Tasks: VFC<Props> = memo((props) => {
   const { taskList, setTaskList } = props;
-  const handleDragEnd = (result) => {
-    reorder(taskList, result.source.index, result.destination.index);
+  const handleDragEnd = (result: DropResult) => {
+    reorder(taskList, result.source.index, result.destination?.index);
     setTaskList(taskList);
   };
   return (
@@ -52,3 +51,5 @@ export const Tasks: VFC<Props> = memo((props) => {
     </div>
   );
 });
+
+Tasks.displayName = 'UserDetailModal';

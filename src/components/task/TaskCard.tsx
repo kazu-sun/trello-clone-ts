@@ -1,18 +1,22 @@
-import { useState, VFC } from 'react';
+import { Dispatch, SetStateAction, useState, VFC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+
 import { TaskCardDeleteButton } from './button/TaskCardDeleteButton';
 import { TaskAddInput } from './TaskAddInput';
+import { taskCardsListProps } from './TaskCards';
 import { TaskCardTitle } from './TaskCardTitle';
 import { Tasks } from './Tasks';
 
-interface taskCardsListProps {
+// Todo1列の情報
+export interface taskListProps {
   id: string;
   draggableId: string;
+  text: string;
 }
 
 interface Props {
-  taskCardsList: taskCardsListProps;
-  setTaskCardsList: taskCardsListProps;
+  taskCardsList: taskCardsListProps[];
+  setTaskCardsList: Dispatch<SetStateAction<taskCardsListProps[]>>;
   taskCard: taskCardsListProps;
   index: number;
 }
@@ -20,7 +24,7 @@ interface Props {
 export const TaskCard: VFC<Props> = (props) => {
   const { taskCardsList, setTaskCardsList, taskCard, index } = props;
   const [inputText, setInputText] = useState('');
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState<taskListProps[]>([]);
 
   return (
     <Draggable draggableId={taskCard.id} index={index}>
@@ -53,3 +57,4 @@ export const TaskCard: VFC<Props> = (props) => {
     </Draggable>
   );
 };
+TaskCard.displayName = 'UserDetailModal';

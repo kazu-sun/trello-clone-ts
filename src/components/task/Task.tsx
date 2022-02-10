@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { Dispatch, SetStateAction, VFC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 interface taskListProps {
@@ -10,7 +10,7 @@ interface taskListProps {
 interface Props {
   task: taskListProps;
   taskList: taskListProps[];
-  setTaskList: taskListProps[];
+  setTaskList: Dispatch<SetStateAction<taskListProps[]>>;
   index: number;
 }
 
@@ -41,3 +41,4 @@ export const Task: VFC<Props> = (props) => {
     </Draggable>
   );
 };
+Task.displayName = 'UserDetailModal';

@@ -9,3 +9,4 @@ export const Header: VFC = memo(() => {
     </div>
   );
 });
+Header.displayName = 'UserDetailModal';
