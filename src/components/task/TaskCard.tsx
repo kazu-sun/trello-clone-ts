@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import { useState, VFC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { TaskCardDeleteButton } from './button/TaskCardDeleteButton';
 import { TaskAddInput } from './TaskAddInput';
 import { TaskCardTitle } from './TaskCardTitle';
 import { Tasks } from './Tasks';
 
-export const TaskCard = (props) => {
+interface taskCardsListProps {
+  id: string;
+  draggableId: string;
+}
+
+interface Props {
+  taskCardsList: taskCardsListProps;
+  setTaskCardsList: taskCardsListProps;
+  taskCard: taskCardsListProps;
+  index: number;
+}
+
+export const TaskCard: VFC<Props> = (props) => {
   const { taskCardsList, setTaskCardsList, taskCard, index } = props;
   const [inputText, setInputText] = useState('');
   const [taskList, setTaskList] = useState([]);

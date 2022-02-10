@@ -1,14 +1,28 @@
-import React from 'react';
+import { memo, VFC } from 'react';
 import { Droppable, DragDropContext } from 'react-beautiful-dnd';
 import { Task } from './Task';
 
+interface taskCardsListProps {
+  id: string;
+  draggableId: string;
+}
+
+interface Props {
+  taskList: taskCardsListProps[];
+  setTaskList: taskCardsListProps[];
+}
+
 //タスクを並び替える
-const reorder = (taskList, startIndex, endindex) => {
+const reorder = (
+  taskList: taskCardsListProps[],
+  startIndex: number,
+  endindex: number,
+) => {
   const remove = taskList.splice(startIndex, 1);
   taskList.splice(endindex, 0, remove[0]);
 };
 
-export const Tasks = (props) => {
+export const Tasks: VFC<Props> = memo((props) => {
   const { taskList, setTaskList } = props;
   const handleDragEnd = (result) => {
     reorder(taskList, result.source.index, result.destination.index);
@@ -37,4 +51,4 @@ export const Tasks = (props) => {
       </DragDropContext>
     </div>
   );
-};
+});

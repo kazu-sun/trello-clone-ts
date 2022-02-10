@@ -1,9 +1,22 @@
-import React from 'react';
+import { VFC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-export const Task = (props) => {
+interface taskListProps {
+  id: string;
+  draggableId: string;
+  text: string;
+}
+
+interface Props {
+  task: taskListProps;
+  taskList: taskListProps[];
+  setTaskList: taskListProps[];
+  index: number;
+}
+
+export const Task: VFC<Props> = (props) => {
   const { task, taskList, setTaskList, index } = props;
-  const handleDelete = (id) => {
+  const handleDelete = (id: string) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (

@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import { memo, useState, VFC } from 'react';
 import { TaskCard } from './TaskCard';
 import { AddTaskCardButton } from './button/AddTaskCardButton';
-import { DragDropContext } from 'react-beautiful-dnd';
-import { Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
+interface taskCardsListProps {
+  id: string;
+  draggableId: string;
+}
 
 //タスクを並び替える
-const reorder = (taskCardsList, startIndex, endindex) => {
+const reorder = (
+  taskCardsList: taskCardsListProps[],
+  startIndex: number,
+  endindex: number,
+) => {
   const remove = taskCardsList.splice(startIndex, 1);
   taskCardsList.splice(endindex, 0, remove[0]);
 };
 
-export const TaskCards = () => {
-  const [taskCardsList, setTaskCardsList] = useState([
+export const TaskCards: VFC = memo(() => {
+  const [taskCardsList, setTaskCardsList] = useState<taskCardsListProps[]>([
     {
       id: '0',
       draggableId: 'item0',
@@ -49,4 +57,4 @@ export const TaskCards = () => {
       </Droppable>
     </DragDropContext>
   );
-};
+});

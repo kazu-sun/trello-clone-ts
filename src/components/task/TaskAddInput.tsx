@@ -1,9 +1,23 @@
-import React from 'react';
+import { ChangeEvent } from 'react';
+import { FormEvent, memo, VFC } from 'react';
 import { v4 as uuid } from 'uuid';
 
-export const TaskAddInput = (props) => {
+interface taskListProps {
+  id: string;
+  draggableId: string;
+  text: string;
+}
+
+interface Props {
+  inputText: string;
+  setInputText: string;
+  setTaskList: taskListProps[];
+  taskList: taskListProps[];
+}
+
+export const TaskAddInput: VFC<Props> = memo((props) => {
   const { inputText, setInputText, setTaskList, taskList } = props;
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     const taskId = uuid();
     e.preventDefault();
     if (inputText === '') return;
@@ -17,7 +31,7 @@ export const TaskAddInput = (props) => {
     ]);
     setInputText('');
   };
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
 
@@ -34,4 +48,4 @@ export const TaskAddInput = (props) => {
       </form>
     </div>
   );
-};
+});

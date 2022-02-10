@@ -1,7 +1,17 @@
-import React from 'react';
+import { memo, VFC } from 'react';
 import { v4 as uuid } from 'uuid';
 
-export const AddTaskCardButton = (props) => {
+interface taskCardsListProps {
+  id: string;
+  draggableId: string;
+}
+
+interface Props {
+  taskCardsList: taskCardsListProps[];
+  setTaskCardsList: taskCardsListProps[];
+}
+
+export const AddTaskCardButton: VFC<Props> = memo((props) => {
   const { taskCardsList, setTaskCardsList } = props;
   const addTaskCard = () => {
     const taskCardId = uuid();
@@ -17,4 +27,4 @@ export const AddTaskCardButton = (props) => {
       </button>
     </div>
   );
-};
+});

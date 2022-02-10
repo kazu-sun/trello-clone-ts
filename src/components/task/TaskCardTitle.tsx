@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { FormEvent, ChangeEvent, memo, useState, VFC, FocusEvent } from 'react';
 
-export const TaskCardTitle = () => {
+export const TaskCardTitle: VFC = memo(() => {
   const [isClick, setIsClick] = useState(false);
   const [inputCardTitle, setInputCardTitle] = useState('Today');
 
@@ -8,16 +8,16 @@ export const TaskCardTitle = () => {
     setIsClick(true);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputCardTitle(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsClick(false);
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     setIsClick(false);
   };
 
@@ -32,7 +32,7 @@ export const TaskCardTitle = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={inputCardTitle}
-            maxLength='10'
+            maxLength={10}
           />
         </form>
       ) : (
@@ -40,4 +40,4 @@ export const TaskCardTitle = () => {
       )}
     </div>
   );
-};
+});

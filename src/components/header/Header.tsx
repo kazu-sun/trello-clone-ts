@@ -1,6 +1,6 @@
-import React from 'react';
+import { memo, VFC } from 'react';
 
-export const Header = () => {
+export const Header: VFC = memo(() => {
   return (
     <div>
       <header>
@@ -8,4 +8,4 @@ export const Header = () => {
       </header>
     </div>
   );
-};
+});
