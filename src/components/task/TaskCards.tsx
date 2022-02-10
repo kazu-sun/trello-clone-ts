@@ -1,6 +1,7 @@
 import { memo, useState, VFC } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 
+import { useTaskReOrder } from '../../hooks/useTaskReOrder';
 import { AddTaskCardButton } from './button/AddTaskCardButton';
 import { TaskCard } from './TaskCard';
 
@@ -10,18 +11,6 @@ export interface taskCardsListProps {
   draggableId: string;
 }
 
-// タスクを並び替える
-const reorder = (
-  taskCardsList: taskCardsListProps[],
-  startIndex: number,
-  endindex: number | undefined,
-) => {
-  if (endindex !== undefined) {
-    const remove = taskCardsList.splice(startIndex, 1);
-    taskCardsList.splice(endindex, 0, remove[0]);
-  }
-};
-
 export const TaskCards: VFC = memo(() => {
   const [taskCardsList, setTaskCardsList] = useState<taskCardsListProps[]>([
     {
@@ -29,8 +18,10 @@ export const TaskCards: VFC = memo(() => {
       draggableId: 'item0',
     },
   ]);
+  const { reOrder } = useTaskReOrder();
+
   const handleDragEnd = (result: DropResult) => {
-    reorder(taskCardsList, result.source.index, result.destination?.index);
+    reOrder(taskCardsList, result.source.index, result.destination?.index);
     setTaskCardsList(taskCardsList);
   };
   return (

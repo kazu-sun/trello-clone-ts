@@ -1,6 +1,7 @@
 import { Dispatch, memo, SetStateAction, VFC } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 
+import { useTaskReOrder } from '../../hooks/useTaskReOrder';
 import { Task } from './Task';
 import { taskListProps } from './TaskCard';
 
@@ -9,22 +10,11 @@ interface Props {
   setTaskList: Dispatch<SetStateAction<taskListProps[]>>;
 }
 
-// タスクを並び替える
-const reorder = (
-  taskList: taskListProps[],
-  startIndex: number,
-  endindex: number | undefined,
-) => {
-  if (endindex !== undefined) {
-    const remove = taskList.splice(startIndex, 1);
-    taskList.splice(endindex, 0, remove[0]);
-  }
-};
-
 export const Tasks: VFC<Props> = memo((props) => {
   const { taskList, setTaskList } = props;
+  const { reOrder } = useTaskReOrder();
   const handleDragEnd = (result: DropResult) => {
-    reorder(taskList, result.source.index, result.destination?.index);
+    reOrder(taskList, result.source.index, result.destination?.index);
     setTaskList(taskList);
   };
   return (
