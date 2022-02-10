@@ -1,6 +1,6 @@
-import React from "react";
-import { Droppable, DragDropContext } from "react-beautiful-dnd";
-import { Task } from "./Task";
+import React from 'react';
+import { Droppable, DragDropContext } from 'react-beautiful-dnd';
+import { Task } from './Task';
 
 //タスクを並び替える
 const reorder = (taskList, startIndex, endindex) => {
@@ -17,7 +17,7 @@ export const Tasks = (props) => {
   return (
     <div>
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="droppable">
+        <Droppable droppableId='droppable'>
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {taskList.map((task, index) => (

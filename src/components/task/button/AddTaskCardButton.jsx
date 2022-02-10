@@ -1,5 +1,5 @@
-import React from "react";
-import { v4 as uuid } from "uuid";
+import React from 'react';
+import { v4 as uuid } from 'uuid';
 
 export const AddTaskCardButton = (props) => {
   const { taskCardsList, setTaskCardsList } = props;
@@ -11,8 +11,8 @@ export const AddTaskCardButton = (props) => {
     ]);
   };
   return (
-    <div className="addTaskCardButtonArea">
-      <button className="addTaskCardButton" onClick={addTaskCard}>
+    <div className='addTaskCardButtonArea'>
+      <button className='addTaskCardButton' onClick={addTaskCard}>
         +
       </button>
     </div>

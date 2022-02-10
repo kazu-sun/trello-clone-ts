@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export const TaskCardTitle = () => {
   const [isClick, setIsClick] = useState(false);
-  const [inputCardTitle, setInputCardTitle] = useState("Today");
+  const [inputCardTitle, setInputCardTitle] = useState('Today');
 
   const handleClick = () => {
     setIsClick(true);
@@ -22,17 +22,17 @@ export const TaskCardTitle = () => {
   };
 
   return (
-    <div onClick={handleClick} className="taskCardTitleInputArea">
+    <div onClick={handleClick} className='taskCardTitleInputArea'>
       {isClick ? (
         <form onSubmit={handleSubmit}>
           <input
-            className="taskCardTitleInput"
+            className='taskCardTitleInput'
             autoFocus
-            type="text"
+            type='text'
             onChange={handleChange}
             onBlur={handleBlur}
             value={inputCardTitle}
-            maxLength="10"
+            maxLength='10'
           />
         </form>
       ) : (

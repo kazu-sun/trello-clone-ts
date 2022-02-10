@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { TaskCard } from "./TaskCard";
-import { AddTaskCardButton } from "./button/AddTaskCardButton";
-import { DragDropContext } from "react-beautiful-dnd";
-import { Droppable } from "react-beautiful-dnd";
+import React, { useState } from 'react';
+import { TaskCard } from './TaskCard';
+import { AddTaskCardButton } from './button/AddTaskCardButton';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
 
 //タスクを並び替える
 const reorder = (taskCardsList, startIndex, endindex) => {
@@ -13,8 +13,8 @@ const reorder = (taskCardsList, startIndex, endindex) => {
 export const TaskCards = () => {
   const [taskCardsList, setTaskCardsList] = useState([
     {
-      id: "0",
-      draggableId: "item0",
+      id: '0',
+      draggableId: 'item0',
     },
   ]);
   const handleDragEnd = (result) => {
@@ -23,10 +23,10 @@ export const TaskCards = () => {
   };
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <Droppable droppableId="droppable" direction="horizontal">
+      <Droppable droppableId='droppable' direction='horizontal'>
         {(provided) => (
           <div
-            className="taskCardArea"
+            className='taskCardArea'
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

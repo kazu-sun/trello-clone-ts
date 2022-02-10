@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const TaskCardDeleteButton = (props) => {
   const { taskCardsList, setTaskCardsList, taskCard } = props;
@@ -9,12 +9,12 @@ export const TaskCardDeleteButton = (props) => {
   return (
     <div>
       <button
-        className="taskCardDeleteButton"
+        className='taskCardDeleteButton'
         onClick={() => {
           taskCardDeleteButton(taskCard.id);
         }}
       >
-        <i className="fa-solid fa-circle-xmark"></i>
+        <i className='fa-solid fa-circle-xmark'></i>
       </button>
     </div>
   );

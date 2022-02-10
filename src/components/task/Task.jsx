@@ -1,5 +1,5 @@
-import React from "react";
-import { Draggable } from "react-beautiful-dnd";
+import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 
 export const Task = (props) => {
   const { task, taskList, setTaskList, index } = props;
@@ -10,18 +10,18 @@ export const Task = (props) => {
     <Draggable index={index} draggableId={task.draggableId}>
       {(provided) => (
         <div
-          className="taskBox"
+          className='taskBox'
           key={task.id}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <p className="taskText">{task.text}</p>
+          <p className='taskText'>{task.text}</p>
           <button
-            className="taskTrashButton"
+            className='taskTrashButton'
             onClick={() => handleDelete(task.id)}
           >
-            <i className="fa-solid fa-trash"></i>
+            <i className='fa-solid fa-trash'></i>
           </button>
         </div>
       )}
